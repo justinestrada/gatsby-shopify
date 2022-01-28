@@ -1,3 +1,5 @@
+require("dotenv").config()
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby Default Starter`,
@@ -7,6 +9,13 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    {
+      resolve: "gatsby-source-shopify",
+      options: {
+        password: process.env.SHOPIFY_SHOP_PASSWORD,
+        storeUrl: process.env.GATSBY_SHOPIFY_STORE_URL,
+      },
+    },    
     `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
